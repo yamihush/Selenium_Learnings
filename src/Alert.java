@@ -18,15 +18,22 @@ public class Alert {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\Muthukumar\\workspace\\drivers\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.get("http://www.tizag.com/javascriptT/javascriptalert.php");
+
+
+
         driver.findElement(By.cssSelector("input[value='Confirmation Alert']")).click();
         System.out.println(driver.switchTo().alert().getText());
+
+        File src = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+
+        FileUtils.copyFile(src,new File("C://Users//Muthukumar//Projects//screenshot.jpg"));
+
         driver.switchTo().alert().accept();
         //driver.switchTo().alert().dismiss();
 
         driver.findElement(By.cssSelector("input[value='Confirmation Alert']")).click();
 
-        File  src = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(src,new File("C:\\Users\\Muthukumar\\Pictures\\Testing"));
+
 
         //driver.close();
 
